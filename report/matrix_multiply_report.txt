@@ -1,0 +1,126 @@
+Relatório de Multiplicação de Matrizes
+-------------------------------------
+
+
+-------------------------------------
+Tamanho da matriz: 128x128
+-------------------------------------
+
+Método sem blocagem
+-------------------------------------
+Tempo gasto (ijk): 0.015136 segundos
+Tempo gasto (ikj): 0.009405 segundos
+Tempo gasto (jik): 0.008756 segundos
+Tempo gasto (jki): 0.009824 segundos
+Tempo gasto (kij): 0.008417 segundos
+Tempo gasto (kji): 0.008643 segundos
+-------------------------------------
+Melhor organização de laço para 128x128: kij= 0.008417 segundos
+
+Método com blocagem
+-------------------------------------
+Tamanho do bloco: 2, Variação: kij, Tempo: 0.011402 segundos
+Tamanho do bloco: 4, Variação: kij, Tempo: 0.009632 segundos
+Tamanho do bloco: 16, Variação: kij, Tempo: 0.008175 segundos
+Tamanho do bloco: 64, Variação: kij, Tempo: 0.008393 segundos
+-------------------------------------
+Melhor tamanho do bloco para 128x128: 16= 0.008175 segundos
+
+Multiplicação usando Strassen
+-------------------------------------
+Tempo gasto (Strassen): 0.007360 segundos
+
+Multiplicação usando CBLAS
+-------------------------------------
+Tempo gasto (CBLAS): 0.000989 segundos
+
+
+Resultados:
+-------------------------------------
+
+Melhor organização de laço para 128x128: kij= 0.008417 segundos
+Melhor tamanho do bloco para 128x128: 16= 0.008175 segundos
+Tempo gasto (Strassen): 0.007360 segundos
+Tempo gasto (CBLAS): 0.000989 segundos
+
+-------------------------------------
+Tamanho da matriz: 512x512
+-------------------------------------
+
+Método sem blocagem
+-------------------------------------
+Tempo gasto (ijk): 0.679200 segundos
+Tempo gasto (ikj): 0.472941 segundos
+Tempo gasto (jik): 0.656083 segundos
+Tempo gasto (jki): 1.044543 segundos
+Tempo gasto (kij): 0.500433 segundos
+Tempo gasto (kji): 1.137861 segundos
+-------------------------------------
+Melhor organização de laço para 512x512: ikj= 0.472941 segundos
+
+Método com blocagem
+-------------------------------------
+Tamanho do bloco: 2, Variação: ikj, Tempo: 0.734748 segundos
+Tamanho do bloco: 4, Variação: ikj, Tempo: 0.633881 segundos
+Tamanho do bloco: 16, Variação: ikj, Tempo: 0.572696 segundos
+Tamanho do bloco: 64, Variação: ikj, Tempo: 0.560768 segundos
+-------------------------------------
+Melhor tamanho do bloco para 512x512: 64= 0.560768 segundos
+
+Multiplicação usando Strassen
+-------------------------------------
+Tempo gasto (Strassen): 0.452916 segundos
+
+Multiplicação usando CBLAS
+-------------------------------------
+Tempo gasto (CBLAS): 0.027624 segundos
+
+
+Resultados:
+-------------------------------------
+
+Melhor organização de laço para 512x512: ikj= 0.472941 segundos
+Melhor tamanho do bloco para 512x512: 64= 0.560768 segundos
+Tempo gasto (Strassen): 0.452916 segundos
+Tempo gasto (CBLAS): 0.027624 segundos
+
+-------------------------------------
+Tamanho da matriz: 1024x1024
+-------------------------------------
+
+Método sem blocagem
+-------------------------------------
+Tempo gasto (ijk): 12.039853 segundos
+Tempo gasto (ikj): 4.238978 segundos
+Tempo gasto (jik): 5.336756 segundos
+Tempo gasto (jki): 23.032872 segundos
+Tempo gasto (kij): 4.009870 segundos
+Tempo gasto (kji): 20.675449 segundos
+-------------------------------------
+Melhor organização de laço para 1024x1024: kij= 4.009870 segundos
+
+Método com blocagem
+-------------------------------------
+Tamanho do bloco: 2, Variação: kij, Tempo: 5.851372 segundos
+Tamanho do bloco: 4, Variação: kij, Tempo: 5.385889 segundos
+Tamanho do bloco: 16, Variação: kij, Tempo: 5.083394 segundos
+Tamanho do bloco: 64, Variação: kij, Tempo: 4.655321 segundos
+-------------------------------------
+Melhor tamanho do bloco para 1024x1024: 64= 4.655321 segundos
+
+Multiplicação usando Strassen
+-------------------------------------
+Tempo gasto (Strassen): 2.808330 segundos
+
+Multiplicação usando CBLAS
+-------------------------------------
+Tempo gasto (CBLAS): 0.183349 segundos
+
+
+Resultados:
+-------------------------------------
+
+Melhor organização de laço para 1024x1024: kij= 4.009870 segundos
+Melhor tamanho do bloco para 1024x1024: 64= 4.655321 segundos
+Tempo gasto (Strassen): 2.808330 segundos
+Tempo gasto (CBLAS): 0.183349 segundos
