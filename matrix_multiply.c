@@ -1,6 +1,6 @@
 #include "matrix_utils.h"
 
-// Implementação ijk
+// ijk implementation
 void matrix_multiply_ijk(double **A, double **B, double **C, int N)
 {
     for (int i = 0; i < N; i++)
@@ -15,7 +15,7 @@ void matrix_multiply_ijk(double **A, double **B, double **C, int N)
     }
 }
 
-// Implementação ikj
+// ikj implementation
 void matrix_multiply_ikj(double **A, double **B, double **C, int N)
 {
     for (int i = 0; i < N; i++)
@@ -30,7 +30,7 @@ void matrix_multiply_ikj(double **A, double **B, double **C, int N)
     }
 }
 
-// Implementação jik
+// jik implementation
 void matrix_multiply_jik(double **A, double **B, double **C, int N)
 {
     for (int j = 0; j < N; j++)
@@ -45,7 +45,7 @@ void matrix_multiply_jik(double **A, double **B, double **C, int N)
     }
 }
 
-// Implementação jki
+// jki implementation
 void matrix_multiply_jki(double **A, double **B, double **C, int N)
 {
     for (int j = 0; j < N; j++)
@@ -60,7 +60,7 @@ void matrix_multiply_jki(double **A, double **B, double **C, int N)
     }
 }
 
-// Implementação kij
+// kij implementation
 void matrix_multiply_kij(double **A, double **B, double **C, int N)
 {
     for (int k = 0; k < N; k++)
@@ -75,7 +75,7 @@ void matrix_multiply_kij(double **A, double **B, double **C, int N)
     }
 }
 
-// Implementação kji
+// kji implementation
 void matrix_multiply_kji(double **A, double **B, double **C, int N)
 {
     for (int k = 0; k < N; k++)

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Função para alocar memória para uma matriz
+// allocate memory for a matrix
 double **allocate_matrix(int n)
 {
   double **matrix = (double **)malloc(n * sizeof(double *));
@@ -22,7 +22,7 @@ double **allocate_matrix(int n)
   return matrix;
 }
 
-// Função para liberar a memória alocada para a matriz
+// free memory for a matrix
 void free_matrix(double **matrix, int N)
 {
   for (int i = 0; i < N; i++)
@@ -32,7 +32,7 @@ void free_matrix(double **matrix, int N)
   free(matrix);
 }
 
-// Inicializa a matriz com valores aleatórios
+// initialize a matrix with random values
 void initialize_matrix(double **matrix, int N)
 {
   for (int i = 0; i < N; i++)
@@ -44,7 +44,7 @@ void initialize_matrix(double **matrix, int N)
   }
 }
 
-// Função para imprimir a matriz
+// print a matrix
 void print_matrix(double **matrix, int N)
 {
   for (int i = 0; i < N; i++)
@@ -58,7 +58,7 @@ void print_matrix(double **matrix, int N)
   printf("\n");
 }
 
-// Função para resetar a matriz
+// reset a matrix to zero
 void reset_matrix(double **matrix, int N)
 {
   for (int i = 0; i < N; i++)
@@ -70,7 +70,7 @@ void reset_matrix(double **matrix, int N)
   }
 }
 
-// Compara duas matrizes
+// compare two matrices
 int compare_matrices(double **A, double **B, int N)
 {
   for (int i = 0; i < N; i++)

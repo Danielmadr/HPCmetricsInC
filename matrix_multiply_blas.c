@@ -3,9 +3,10 @@
 #include <cblas.h>
 #include <stdlib.h>
 
-// Implementação usando CBLAS
+// CBLAS Implementation of Matrix Multiplication
 void matrix_multiply_cblas(double **A, double **B, double **C, int N)
 {
+    // Flatten the matrices
     double *a_flat = (double *)malloc(N * N * sizeof(double));
     double *b_flat = (double *)malloc(N * N * sizeof(double));
     double *c_flat = (double *)malloc(N * N * sizeof(double));
@@ -20,6 +21,7 @@ void matrix_multiply_cblas(double **A, double **B, double **C, int N)
         }
     }
 
+    // Perform the matrix multiplication
     cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, N, N, N, 1.0, a_flat, N, b_flat, N, 0.0, c_flat, N);
 
     for (int i = 0; i < N; i++)
