@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "matrix_utils.h"
+#include "../../utils/matrix_utils.h"
 
 // funtion to sum two matrices
 void add_matrices(double **A, double **B, double **C, int n)

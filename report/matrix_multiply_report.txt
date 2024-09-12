@@ -1,4 +1,4 @@
-Relatório de Multiplicação de Matrizes       Data: 12-09-2024 15:09:27
+Relatório de Multiplicação de Matrizes       Data: 12-09-2024 16:48:59
 -----------------------------------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------------------------------
@@ -9,185 +9,185 @@ Método: Sem blocagem
 -------------------------------------------
 
 Método: ijk
-Tempo real: 0.011976 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 289389
-PAPI_L2_TCM: 126881
-PAPI_L3_TCM: 29543
-PAPI_TOT_CYC: 33678200
+Tempo real: 0.010723 segundos
+Tempo de CPU: 0.000044 segundos
+PAPI_L1_TCM: 276180
+PAPI_L2_TCM: 152422
+PAPI_L3_TCM: 23529
+PAPI_TOT_CYC: 30810723
 PAPI_TOT_INS: 105006909
 PAPI_FP_OPS: -1
-MFLOPS ≈ 8768.11
-CPI: 0.32
+MFLOPS ≈ 9792.68
+CPI: 0.29
 
 Método: ikj
-Tempo real: 0.009480 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 270370
-PAPI_L2_TCM: 189533
-PAPI_L3_TCM: 37431
-PAPI_TOT_CYC: 32389171
+Tempo real: 0.010870 segundos
+Tempo de CPU: 0.000044 segundos
+PAPI_L1_TCM: 269494
+PAPI_L2_TCM: 203156
+PAPI_L3_TCM: 21901
+PAPI_TOT_CYC: 31319707
 PAPI_TOT_INS: 105006909
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11076.68
-CPI: 0.31
+MFLOPS ≈ 9660.25
+CPI: 0.30
 
 Método: jik
-Tempo real: 0.009355 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 303211
-PAPI_L2_TCM: 340437
-PAPI_L3_TCM: 45175
-PAPI_TOT_CYC: 33586149
-PAPI_TOT_INS: 105006909
+Tempo real: 0.013372 segundos
+Tempo de CPU: 0.000055 segundos
+PAPI_L1_TCM: 315390
+PAPI_L2_TCM: 379096
+PAPI_L3_TCM: 75430
+PAPI_TOT_CYC: 33989628
+PAPI_TOT_INS: 105006911
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11224.68
+MFLOPS ≈ 7852.75
 CPI: 0.32
 
 Método: jki
-Tempo real: 0.009096 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 335503
-PAPI_L2_TCM: 213412
-PAPI_L3_TCM: 35839
-PAPI_TOT_CYC: 32629395
+Tempo real: 0.011332 segundos
+Tempo de CPU: 0.000046 segundos
+PAPI_L1_TCM: 359623
+PAPI_L2_TCM: 198810
+PAPI_L3_TCM: 34254
+PAPI_TOT_CYC: 33722661
 PAPI_TOT_INS: 105006909
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11544.30
-CPI: 0.31
+MFLOPS ≈ 9266.41
+CPI: 0.32
 
 Método: kij
-Tempo real: 0.008354 segundos
-Tempo de CPU: 0.000000 segundos
-PAPI_L1_TCM: 292353
-PAPI_L2_TCM: 339133
-PAPI_L3_TCM: 23994
-PAPI_TOT_CYC: 29131117
+Tempo real: 0.010843 segundos
+Tempo de CPU: 0.000044 segundos
+PAPI_L1_TCM: 291650
+PAPI_L2_TCM: 186682
+PAPI_L3_TCM: 59389
+PAPI_TOT_CYC: 30178832
 PAPI_TOT_INS: 105006909
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12569.66
-CPI: 0.28
+MFLOPS ≈ 9684.30
+CPI: 0.29
 
 Método: kji
-Tempo real: 0.009323 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 304156
-PAPI_L2_TCM: 257300
-PAPI_L3_TCM: 26971
-PAPI_TOT_CYC: 32670213
-PAPI_TOT_INS: 105006909
+Tempo real: 0.013572 segundos
+Tempo de CPU: 0.000055 segundos
+PAPI_L1_TCM: 398571
+PAPI_L2_TCM: 193518
+PAPI_L3_TCM: 42036
+PAPI_TOT_CYC: 37151722
+PAPI_TOT_INS: 105006910
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11263.21
-CPI: 0.31
+MFLOPS ≈ 7737.03
+CPI: 0.35
 
 Método: Com blocagem
 -------------------------------------------
 
 Método: 2 blocos
-Tempo real: 0.011952 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 151648
-PAPI_L2_TCM: 205929
-PAPI_L3_TCM: 58622
-PAPI_TOT_CYC: 43913401
-PAPI_TOT_INS: 145532397
+Tempo real: 0.016852 segundos
+Tempo de CPU: 0.000069 segundos
+PAPI_L1_TCM: 174616
+PAPI_L2_TCM: 164797
+PAPI_L3_TCM: 40438
+PAPI_TOT_CYC: 49433337
+PAPI_TOT_INS: 145532277
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12176.41
-CPI: 0.30
+MFLOPS ≈ 8635.91
+CPI: 0.34
 
 Método: 4 blocos
-Tempo real: 0.009799 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 78626
-PAPI_L2_TCM: 100606
-PAPI_L3_TCM: 36675
-PAPI_TOT_CYC: 36284871
-PAPI_TOT_INS: 126921902
+Tempo real: 0.014037 segundos
+Tempo de CPU: 0.000057 segundos
+PAPI_L1_TCM: 91837
+PAPI_L2_TCM: 103627
+PAPI_L3_TCM: 35592
+PAPI_TOT_CYC: 40009513
+PAPI_TOT_INS: 126921782
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12952.54
-CPI: 0.29
+MFLOPS ≈ 9041.95
+CPI: 0.32
 
 Método: 16 blocos
-Tempo real: 0.009467 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 55267
-PAPI_L2_TCM: 71495
-PAPI_L3_TCM: 36673
-PAPI_TOT_CYC: 33474258
-PAPI_TOT_INS: 117719101
+Tempo real: 0.012607 segundos
+Tempo de CPU: 0.000051 segundos
+PAPI_L1_TCM: 56471
+PAPI_L2_TCM: 78848
+PAPI_L3_TCM: 41623
+PAPI_TOT_CYC: 34530477
+PAPI_TOT_INS: 117718981
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12434.68
-CPI: 0.28
+MFLOPS ≈ 9337.59
+CPI: 0.29
 
 Método: 64 blocos
-Tempo real: 0.009658 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 391585
-PAPI_L2_TCM: 265250
-PAPI_L3_TCM: 34909
-PAPI_TOT_CYC: 35567411
-PAPI_TOT_INS: 115910161
+Tempo real: 0.011269 segundos
+Tempo de CPU: 0.000046 segundos
+PAPI_L1_TCM: 252448
+PAPI_L2_TCM: 83899
+PAPI_L3_TCM: 47411
+PAPI_TOT_CYC: 33636363
+PAPI_TOT_INS: 115910041
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12001.47
-CPI: 0.31
-
-Método: 16 blocos
-Tempo real: 0.009467 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 55267
-PAPI_L2_TCM: 71495
-PAPI_L3_TCM: 36673
-PAPI_TOT_CYC: 33474258
-PAPI_TOT_INS: 117719101
-PAPI_FP_OPS: -1
-MFLOPS ≈ 12434.68
-CPI: 0.28
-
-Método: Strassen
--------------------------------------------
-
-Método: Strassen
-Tempo real: 0.008075 segundos
-Tempo de CPU: 0.000000 segundos
-PAPI_L1_TCM: 204353
-PAPI_L2_TCM: 112241
-PAPI_L3_TCM: 38713
-PAPI_TOT_CYC: 28533295
-PAPI_TOT_INS: 96921877
-PAPI_FP_OPS: -1
-MFLOPS ≈ 12002.71
+MFLOPS ≈ 10285.74
 CPI: 0.29
 
+Método: 64 blocos
+Tempo real: 0.011269 segundos
+Tempo de CPU: 0.000046 segundos
+PAPI_L1_TCM: 252448
+PAPI_L2_TCM: 83899
+PAPI_L3_TCM: 47411
+PAPI_TOT_CYC: 33636363
+PAPI_TOT_INS: 115910041
+PAPI_FP_OPS: -1
+MFLOPS ≈ 10285.74
+CPI: 0.29
+
+Método: Strassen
+-------------------------------------------
+
+Método: Strassen
+Tempo real: 0.013202 segundos
+Tempo de CPU: 0.000054 segundos
+PAPI_L1_TCM: 216506
+PAPI_L2_TCM: 141440
+PAPI_L3_TCM: 65935
+PAPI_TOT_CYC: 31444078
+PAPI_TOT_INS: 96921879
+PAPI_FP_OPS: -1
+MFLOPS ≈ 7341.45
+CPI: 0.32
+
 Método: CBLAS
 -------------------------------------------
 
 Método: CBLAS
-Tempo real: 0.000660 segundos
-Tempo de CPU: 0.000000 segundos
-PAPI_L1_TCM: 51033
-PAPI_L2_TCM: 65028
-PAPI_L3_TCM: 19748
-PAPI_TOT_CYC: 1891673
-PAPI_TOT_INS: 5288415
+Tempo real: 0.003892 segundos
+Tempo de CPU: 0.000016 segundos
+PAPI_L1_TCM: 49142
+PAPI_L2_TCM: 74637
+PAPI_L3_TCM: 31583
+PAPI_TOT_CYC: 1981237
+PAPI_TOT_INS: 5288414
 PAPI_FP_OPS: -1
-MFLOPS ≈ 8012.75
-CPI: 0.36
+MFLOPS ≈ 1358.79
+CPI: 0.37
 
 
 -------------------------------------------
 Resultados Gerais
 -------------------------------------------
-Melhor método sem blocagem: kij
-Tempo real: 0.008354 segundos
+Melhor método sem blocagem: ijk
+Tempo real: 0.010723 segundos
 -------------------------------------------
-Melhor método com blocagem: 16 blocos
-Tempo real: 0.009467 segundos
+Melhor método com blocagem: 64 blocos
+Tempo real: 0.011269 segundos
 -------------------------------------------
 Melhor método Strassen: Strassen
-Tempo real: 0.008075 segundos
+Tempo real: 0.013202 segundos
 -------------------------------------------
 Melhor método CBLAS: CBLAS
-Tempo real: 0.000660 segundos
+Tempo real: 0.003892 segundos
 -------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 Tamanho da matriz: 512x512
@@ -197,185 +197,185 @@ Método: Sem blocagem
 -------------------------------------------
 
 Método: ijk
-Tempo real: 0.687730 segundos
-Tempo de CPU: 0.000038 segundos
-PAPI_L1_TCM: 154576576
-PAPI_L2_TCM: 27557844
-PAPI_L3_TCM: 2401937
-PAPI_TOT_CYC: 2604609775
-PAPI_TOT_INS: 6713251079
+Tempo real: 0.754032 segundos
+Tempo de CPU: 0.003063 segundos
+PAPI_L1_TCM: 153822973
+PAPI_L2_TCM: 28460163
+PAPI_L3_TCM: 3348969
+PAPI_TOT_CYC: 2704609955
+PAPI_TOT_INS: 6713251083
 PAPI_FP_OPS: -1
-MFLOPS ≈ 9761.46
-CPI: 0.39
+MFLOPS ≈ 8903.14
+CPI: 0.40
 
 Método: ikj
-Tempo real: 0.581253 segundos
-Tempo de CPU: 0.000032 segundos
-PAPI_L1_TCM: 17394634
-PAPI_L2_TCM: 36967892
-PAPI_L3_TCM: 17479815
-PAPI_TOT_CYC: 2057338801
-PAPI_TOT_INS: 6713251064
+Tempo real: 0.607961 segundos
+Tempo de CPU: 0.002464 segundos
+PAPI_L1_TCM: 17172878
+PAPI_L2_TCM: 36561743
+PAPI_L3_TCM: 6714529
+PAPI_TOT_CYC: 1932442737
+PAPI_TOT_INS: 6713251065
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11549.62
-CPI: 0.31
+MFLOPS ≈ 11042.24
+CPI: 0.29
 
 Método: jik
-Tempo real: 0.676786 segundos
-Tempo de CPU: 0.000037 segundos
-PAPI_L1_TCM: 162002386
-PAPI_L2_TCM: 42367916
-PAPI_L3_TCM: 18352421
-PAPI_TOT_CYC: 2499676728
-PAPI_TOT_INS: 6713251071
+Tempo real: 0.689485 segundos
+Tempo de CPU: 0.002786 segundos
+PAPI_L1_TCM: 162016857
+PAPI_L2_TCM: 41892837
+PAPI_L3_TCM: 5364876
+PAPI_TOT_CYC: 2366816765
+PAPI_TOT_INS: 6713251073
 PAPI_FP_OPS: -1
-MFLOPS ≈ 9919.31
-CPI: 0.37
+MFLOPS ≈ 9736.62
+CPI: 0.35
 
 Método: jki
-Tempo real: 1.363034 segundos
-Tempo de CPU: 0.000075 segundos
-PAPI_L1_TCM: 306932972
-PAPI_L2_TCM: 72220702
-PAPI_L3_TCM: 21311837
-PAPI_TOT_CYC: 4515635470
-PAPI_TOT_INS: 6713251143
+Tempo real: 0.737653 segundos
+Tempo de CPU: 0.002972 segundos
+PAPI_L1_TCM: 305786129
+PAPI_L2_TCM: 67713628
+PAPI_L3_TCM: 2451988
+PAPI_TOT_CYC: 2745160940
+PAPI_TOT_INS: 6713251079
 PAPI_FP_OPS: -1
-MFLOPS ≈ 4925.23
-CPI: 0.67
+MFLOPS ≈ 9100.83
+CPI: 0.41
 
 Método: kij
-Tempo real: 0.658468 segundos
-Tempo de CPU: 0.000036 segundos
-PAPI_L1_TCM: 18301037
-PAPI_L2_TCM: 39061464
-PAPI_L3_TCM: 17432270
-PAPI_TOT_CYC: 2251105112
-PAPI_TOT_INS: 6713251070
+Tempo real: 0.484295 segundos
+Tempo de CPU: 0.001947 segundos
+PAPI_L1_TCM: 17531276
+PAPI_L2_TCM: 38362784
+PAPI_L3_TCM: 2913968
+PAPI_TOT_CYC: 1802180281
+PAPI_TOT_INS: 6713251053
 PAPI_FP_OPS: -1
-MFLOPS ≈ 10195.26
-CPI: 0.34
+MFLOPS ≈ 13861.90
+CPI: 0.27
 
 Método: kji
-Tempo real: 1.154692 segundos
-Tempo de CPU: 0.000064 segundos
-PAPI_L1_TCM: 306507831
-PAPI_L2_TCM: 59528997
-PAPI_L3_TCM: 14970307
-PAPI_TOT_CYC: 3868738807
-PAPI_TOT_INS: 6713251120
+Tempo real: 0.706661 segundos
+Tempo de CPU: 0.002833 segundos
+PAPI_L1_TCM: 306165492
+PAPI_L2_TCM: 62254746
+PAPI_L3_TCM: 1510816
+PAPI_TOT_CYC: 2654145943
+PAPI_TOT_INS: 6713251080
 PAPI_FP_OPS: -1
-MFLOPS ≈ 5813.89
-CPI: 0.58
+MFLOPS ≈ 9499.96
+CPI: 0.40
 
 Método: Com blocagem
 -------------------------------------------
 
 Método: 2 blocos
-Tempo real: 0.779153 segundos
-Tempo de CPU: 0.000043 segundos
-PAPI_L1_TCM: 9046319
-PAPI_L2_TCM: 18202365
-PAPI_L3_TCM: 11781784
-PAPI_TOT_CYC: 2832194280
-PAPI_TOT_INS: 9312013665
+Tempo real: 0.707929 segundos
+Tempo de CPU: 0.002831 segundos
+PAPI_L1_TCM: 8936856
+PAPI_L2_TCM: 18593314
+PAPI_L3_TCM: 3443821
+PAPI_TOT_CYC: 2633718403
+PAPI_TOT_INS: 9312013747
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11951.46
-CPI: 0.30
+MFLOPS ≈ 13153.88
+CPI: 0.28
 
 Método: 4 blocos
-Tempo real: 0.724722 segundos
-Tempo de CPU: 0.000040 segundos
-PAPI_L1_TCM: 6843621
-PAPI_L2_TCM: 10457897
-PAPI_L3_TCM: 7141991
-PAPI_TOT_CYC: 2575872949
-PAPI_TOT_INS: 8122435677
+Tempo real: 0.608651 segundos
+Tempo de CPU: 0.002428 segundos
+PAPI_L1_TCM: 5797499
+PAPI_L2_TCM: 9702971
+PAPI_L3_TCM: 3048555
+PAPI_TOT_CYC: 2279104292
+PAPI_TOT_INS: 8122435753
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11207.66
-CPI: 0.32
+MFLOPS ≈ 13344.98
+CPI: 0.28
 
 Método: 16 blocos
-Tempo real: 0.579382 segundos
-Tempo de CPU: 0.000032 segundos
-PAPI_L1_TCM: 35198135
-PAPI_L2_TCM: 7716596
-PAPI_L3_TCM: 2633723
-PAPI_TOT_CYC: 2110296514
-PAPI_TOT_INS: 7533931661
+Tempo real: 0.531483 segundos
+Tempo de CPU: 0.002115 segundos
+PAPI_L1_TCM: 33106394
+PAPI_L2_TCM: 5164243
+PAPI_L3_TCM: 1560384
+PAPI_TOT_CYC: 2000853656
+PAPI_TOT_INS: 7533931745
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13003.39
-CPI: 0.28
+MFLOPS ≈ 14175.30
+CPI: 0.27
 
 Método: 64 blocos
-Tempo real: 0.568683 segundos
-Tempo de CPU: 0.000031 segundos
-PAPI_L1_TCM: 22416285
-PAPI_L2_TCM: 20312118
-PAPI_L3_TCM: 2386431
-PAPI_TOT_CYC: 2064433949
-PAPI_TOT_INS: 7418191899
+Tempo real: 0.517937 segundos
+Tempo de CPU: 0.002057 segundos
+PAPI_L1_TCM: 23988973
+PAPI_L2_TCM: 19719413
+PAPI_L3_TCM: 812658
+PAPI_TOT_CYC: 1965759754
+PAPI_TOT_INS: 7418191985
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13044.51
-CPI: 0.28
+MFLOPS ≈ 14322.58
+CPI: 0.26
 
 Método: 64 blocos
-Tempo real: 0.568683 segundos
-Tempo de CPU: 0.000031 segundos
-PAPI_L1_TCM: 22416285
-PAPI_L2_TCM: 20312118
-PAPI_L3_TCM: 2386431
-PAPI_TOT_CYC: 2064433949
-PAPI_TOT_INS: 7418191899
+Tempo real: 0.517937 segundos
+Tempo de CPU: 0.002057 segundos
+PAPI_L1_TCM: 23988973
+PAPI_L2_TCM: 19719413
+PAPI_L3_TCM: 812658
+PAPI_TOT_CYC: 1965759754
+PAPI_TOT_INS: 7418191985
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13044.51
-CPI: 0.28
+MFLOPS ≈ 14322.58
+CPI: 0.26
 
 Método: Strassen
 -------------------------------------------
 
 Método: Strassen
-Tempo real: 0.395388 segundos
-Tempo de CPU: 0.000022 segundos
-PAPI_L1_TCM: 11654878
-PAPI_L2_TCM: 8982194
-PAPI_L3_TCM: 3253741
-PAPI_TOT_CYC: 1426644949
-PAPI_TOT_INS: 4938536581
+Tempo real: 0.394765 segundos
+Tempo de CPU: 0.001566 segundos
+PAPI_L1_TCM: 11559753
+PAPI_L2_TCM: 8957456
+PAPI_L3_TCM: 2414007
+PAPI_TOT_CYC: 1409712511
+PAPI_TOT_INS: 4938536578
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12490.36
+MFLOPS ≈ 12510.07
 CPI: 0.29
 
 Método: CBLAS
 -------------------------------------------
 
 Método: CBLAS
-Tempo real: 0.024297 segundos
-Tempo de CPU: 0.000001 segundos
-PAPI_L1_TCM: 2310361
-PAPI_L2_TCM: 3181868
-PAPI_L3_TCM: 1085913
-PAPI_TOT_CYC: 82992447
-PAPI_TOT_INS: 254218894
+Tempo real: 0.026479 segundos
+Tempo de CPU: 0.000105 segundos
+PAPI_L1_TCM: 2419382
+PAPI_L2_TCM: 3198841
+PAPI_L3_TCM: 1027806
+PAPI_TOT_CYC: 83214546
+PAPI_TOT_INS: 254218895
 PAPI_FP_OPS: -1
-MFLOPS ≈ 10462.97
+MFLOPS ≈ 9600.77
 CPI: 0.33
 
 
 -------------------------------------------
 Resultados Gerais
 -------------------------------------------
-Melhor método sem blocagem: ikj
-Tempo real: 0.581253 segundos
+Melhor método sem blocagem: kij
+Tempo real: 0.484295 segundos
 -------------------------------------------
 Melhor método com blocagem: 64 blocos
-Tempo real: 0.568683 segundos
+Tempo real: 0.517937 segundos
 -------------------------------------------
 Melhor método Strassen: Strassen
-Tempo real: 0.395388 segundos
+Tempo real: 0.394765 segundos
 -------------------------------------------
 Melhor método CBLAS: CBLAS
-Tempo real: 0.024297 segundos
+Tempo real: 0.026479 segundos
 -------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 Tamanho da matriz: 1024x1024
@@ -385,183 +385,183 @@ Método: Sem blocagem
 -------------------------------------------
 
 Método: ijk
-Tempo real: 10.961344 segundos
-Tempo de CPU: 0.000605 segundos
-PAPI_L1_TCM: 1351347683
-PAPI_L2_TCM: 319936026
-PAPI_L3_TCM: 200212876
-PAPI_TOT_CYC: 35314018494
-PAPI_TOT_INS: 53696540554
+Tempo real: 10.812632 segundos
+Tempo de CPU: 0.041108 segundos
+PAPI_L1_TCM: 1354587649
+PAPI_L2_TCM: 467869026
+PAPI_L3_TCM: 178357506
+PAPI_TOT_CYC: 35048061433
+PAPI_TOT_INS: 53696540950
 PAPI_FP_OPS: -1
-MFLOPS ≈ 4898.72
-CPI: 0.66
+MFLOPS ≈ 4966.09
+CPI: 0.65
 
 Método: ikj
-Tempo real: 4.475781 segundos
-Tempo de CPU: 0.000247 segundos
-PAPI_L1_TCM: 141326983
-PAPI_L2_TCM: 299005132
-PAPI_L3_TCM: 208580636
-PAPI_TOT_CYC: 16119546600
-PAPI_TOT_INS: 53696538749
+Tempo real: 4.004180 segundos
+Tempo de CPU: 0.014995 segundos
+PAPI_L1_TCM: 137098869
+PAPI_L2_TCM: 301555066
+PAPI_L3_TCM: 158262499
+PAPI_TOT_CYC: 15224743885
+PAPI_TOT_INS: 53696538705
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11997.13
-CPI: 0.30
+MFLOPS ≈ 13410.12
+CPI: 0.28
 
 Método: jik
-Tempo real: 5.423055 segundos
-Tempo de CPU: 0.000299 segundos
-PAPI_L1_TCM: 1348072626
-PAPI_L2_TCM: 373221430
-PAPI_L3_TCM: 216692138
-PAPI_TOT_CYC: 20276608091
-PAPI_TOT_INS: 53696538845
+Tempo real: 5.163899 segundos
+Tempo de CPU: 0.018971 segundos
+PAPI_L1_TCM: 1347930378
+PAPI_L2_TCM: 445827166
+PAPI_L3_TCM: 176736953
+PAPI_TOT_CYC: 19937493802
+PAPI_TOT_INS: 53696538823
 PAPI_FP_OPS: -1
-MFLOPS ≈ 9901.53
-CPI: 0.38
+MFLOPS ≈ 10398.45
+CPI: 0.37
 
 Método: jki
-Tempo real: 18.163390 segundos
-Tempo de CPU: 0.001002 segundos
-PAPI_L1_TCM: 3318130868
-PAPI_L2_TCM: 3503988019
-PAPI_L3_TCM: 229520653
-PAPI_TOT_CYC: 61416993031
-PAPI_TOT_INS: 53696540118
+Tempo real: 17.871779 segundos
+Tempo de CPU: 0.061611 segundos
+PAPI_L1_TCM: 3234679979
+PAPI_L2_TCM: 3828702093
+PAPI_L3_TCM: 218937635
+PAPI_TOT_CYC: 60816764695
+PAPI_TOT_INS: 53696540105
 PAPI_FP_OPS: -1
-MFLOPS ≈ 2956.31
-CPI: 1.14
+MFLOPS ≈ 3004.54
+CPI: 1.13
 
 Método: kij
-Tempo real: 4.108856 segundos
-Tempo de CPU: 0.000227 segundos
-PAPI_L1_TCM: 140600443
-PAPI_L2_TCM: 309998037
-PAPI_L3_TCM: 192481701
-PAPI_TOT_CYC: 15291268682
-PAPI_TOT_INS: 53696538713
+Tempo real: 3.952117 segundos
+Tempo de CPU: 0.013441 segundos
+PAPI_L1_TCM: 140683152
+PAPI_L2_TCM: 309951180
+PAPI_L3_TCM: 169372828
+PAPI_TOT_CYC: 15266519034
+PAPI_TOT_INS: 53696538695
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13068.49
+MFLOPS ≈ 13586.78
 CPI: 0.28
 
 Método: kji
-Tempo real: 16.056341 segundos
-Tempo de CPU: 0.000884 segundos
-PAPI_L1_TCM: 3332146928
-PAPI_L2_TCM: 3581681938
-PAPI_L3_TCM: 235301808
-PAPI_TOT_CYC: 57130841539
-PAPI_TOT_INS: 53696539910
+Tempo real: 14.510727 segundos
+Tempo de CPU: 0.047031 segundos
+PAPI_L1_TCM: 3246335290
+PAPI_L2_TCM: 3824342553
+PAPI_L3_TCM: 204232147
+PAPI_TOT_CYC: 54563987501
+PAPI_TOT_INS: 53696540125
 PAPI_FP_OPS: -1
-MFLOPS ≈ 3344.26
-CPI: 1.06
+MFLOPS ≈ 3700.47
+CPI: 1.02
 
 Método: Com blocagem
 -------------------------------------------
 
 Método: 2 blocos
-Tempo real: 5.760320 segundos
-Tempo de CPU: 0.000317 segundos
-PAPI_L1_TCM: 85566752
-PAPI_L2_TCM: 158384221
-PAPI_L3_TCM: 115057141
-PAPI_TOT_CYC: 21827336340
-PAPI_TOT_INS: 74493467053
+Tempo real: 5.525238 segundos
+Tempo de CPU: 0.017593 segundos
+PAPI_L1_TCM: 83350784
+PAPI_L2_TCM: 155186916
+PAPI_L3_TCM: 97069447
+PAPI_TOT_CYC: 21390426150
+PAPI_TOT_INS: 74493467051
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12932.18
+MFLOPS ≈ 13482.40
 CPI: 0.29
 
 Método: 4 blocos
-Tempo real: 5.059106 segundos
-Tempo de CPU: 0.000278 segundos
-PAPI_L1_TCM: 73259993
-PAPI_L2_TCM: 81439881
-PAPI_L3_TCM: 60622338
-PAPI_TOT_CYC: 18620969163
-PAPI_TOT_INS: 64978816872
+Tempo real: 5.211808 segundos
+Tempo de CPU: 0.016324 segundos
+PAPI_L1_TCM: 73031129
+PAPI_L2_TCM: 81745470
+PAPI_L3_TCM: 58751353
+PAPI_TOT_CYC: 18603235714
+PAPI_TOT_INS: 64978816913
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12843.93
+MFLOPS ≈ 12467.62
 CPI: 0.29
 
 Método: 16 blocos
-Tempo real: 4.359680 segundos
-Tempo de CPU: 0.000240 segundos
-PAPI_L1_TCM: 281965269
-PAPI_L2_TCM: 59257783
-PAPI_L3_TCM: 19299856
-PAPI_TOT_CYC: 16383389615
-PAPI_TOT_INS: 60271404964
+Tempo real: 4.766820 segundos
+Tempo de CPU: 0.014710 segundos
+PAPI_L1_TCM: 282438129
+PAPI_L2_TCM: 70605323
+PAPI_L3_TCM: 18896857
+PAPI_TOT_CYC: 16472768967
+PAPI_TOT_INS: 60271405006
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13824.73
+MFLOPS ≈ 12643.94
 CPI: 0.27
 
 Método: 64 blocos
-Tempo real: 4.421330 segundos
-Tempo de CPU: 0.000243 segundos
-PAPI_L1_TCM: 191715087
-PAPI_L2_TCM: 219045669
-PAPI_L3_TCM: 12327305
-PAPI_TOT_CYC: 15957319392
-PAPI_TOT_INS: 59345526729
+Tempo real: 4.419182 segundos
+Tempo de CPU: 0.013454 segundos
+PAPI_L1_TCM: 191443428
+PAPI_L2_TCM: 162377324
+PAPI_L3_TCM: 9965973
+PAPI_TOT_CYC: 15891895558
+PAPI_TOT_INS: 59345526759
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13422.55
+MFLOPS ≈ 13429.08
 CPI: 0.27
 
-Método: 16 blocos
-Tempo real: 4.359680 segundos
-Tempo de CPU: 0.000240 segundos
-PAPI_L1_TCM: 281965269
-PAPI_L2_TCM: 59257783
-PAPI_L3_TCM: 19299856
-PAPI_TOT_CYC: 16383389615
-PAPI_TOT_INS: 60271404964
+Método: 64 blocos
+Tempo real: 4.419182 segundos
+Tempo de CPU: 0.013454 segundos
+PAPI_L1_TCM: 191443428
+PAPI_L2_TCM: 162377324
+PAPI_L3_TCM: 9965973
+PAPI_TOT_CYC: 15891895558
+PAPI_TOT_INS: 59345526759
 PAPI_FP_OPS: -1
-MFLOPS ≈ 13824.73
+MFLOPS ≈ 13429.08
 CPI: 0.27
 
 Método: Strassen
 -------------------------------------------
 
 Método: Strassen
-Tempo real: 2.870813 segundos
-Tempo de CPU: 0.000158 segundos
-PAPI_L1_TCM: 82875521
-PAPI_L2_TCM: 68759271
-PAPI_L3_TCM: 25652416
-PAPI_TOT_CYC: 10061910424
-PAPI_TOT_INS: 34818221597
+Tempo real: 2.797940 segundos
+Tempo de CPU: 0.008446 segundos
+PAPI_L1_TCM: 81984268
+PAPI_L2_TCM: 66370152
+PAPI_L3_TCM: 21118855
+PAPI_TOT_CYC: 9985386561
+PAPI_TOT_INS: 34818221594
 PAPI_FP_OPS: -1
-MFLOPS ≈ 12128.35
+MFLOPS ≈ 12444.23
 CPI: 0.29
 
 Método: CBLAS
 -------------------------------------------
 
 Método: CBLAS
-Tempo real: 0.167644 segundos
-Tempo de CPU: 0.000009 segundos
-PAPI_L1_TCM: 14136286
-PAPI_L2_TCM: 14668332
-PAPI_L3_TCM: 6521865
-PAPI_TOT_CYC: 604126213
-PAPI_TOT_INS: 1942936107
+Tempo real: 0.202177 segundos
+Tempo de CPU: 0.000610 segundos
+PAPI_L1_TCM: 15156521
+PAPI_L2_TCM: 15098621
+PAPI_L3_TCM: 7230021
+PAPI_TOT_CYC: 623333367
+PAPI_TOT_INS: 1942936112
 PAPI_FP_OPS: -1
-MFLOPS ≈ 11589.65
-CPI: 0.31
+MFLOPS ≈ 9610.07
+CPI: 0.32
 
 
 -------------------------------------------
 Resultados Gerais
 -------------------------------------------
 Melhor método sem blocagem: kij
-Tempo real: 4.108856 segundos
+Tempo real: 3.952117 segundos
 -------------------------------------------
-Melhor método com blocagem: 16 blocos
-Tempo real: 4.359680 segundos
+Melhor método com blocagem: 64 blocos
+Tempo real: 4.419182 segundos
 -------------------------------------------
 Melhor método Strassen: Strassen
-Tempo real: 2.870813 segundos
+Tempo real: 2.797940 segundos
 -------------------------------------------
 Melhor método CBLAS: CBLAS
-Tempo real: 0.167644 segundos
+Tempo real: 0.202177 segundos
 -------------------------------------------

@@ -1,4 +1,4 @@
-#include "matrix_utils.h"
+#include "../../utils/matrix_utils.h"
 
 // ijk implementation
 void matrix_multiply_ijk(double **A, double **B, double **C, int N)

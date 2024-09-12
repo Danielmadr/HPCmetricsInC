@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "matrix_utils.h"
-#include "matrix_multiply.h"
-#include "matrix_multiply_blas.h"
-#include "matrix_multiply_blocking.h"
-#include "matrix_multiply_strassen.h"
-#include "performance_utils.h"
+#include "../utils/matrix_utils.h"
+#include "../utils/performance_utils.h"
+#include "../src/mat_mult/matrix_multiply.h"
+#include "../src/blocking/matrix_multiply_blocking.h"
+#include "../src/cblas/matrix_multiply_blas.h"
+#include "../src/strassen/matrix_multiply_strassen.h"
 
-void test_func_generic(void (*func)(double **, double **, double **, int, void *), double **A, double **B, double **C, double **R, int n, void *args)
+void test_func_generic(void (*func)(double **, double **, double **, int, void *, void *), double **A, double **B, double **C, double **R, int n, void *args, void *args2)
 {
   reset_matrix(C, n);
-  func(A, B, C, n, args);
+  func(A, B, C, n, args, args2);
   if (compare_matrices(C, R, n))
   {
     printf("Teste passou\n");
@@ -23,12 +23,12 @@ void test_func_generic(void (*func)(double **, double **, double **, int, void *
 
 void test_func(void (*func)(double **, double **, double **, int), double **A, double **B, double **C, double **R, int n)
 {
-  return test_func_generic((void (*)(double **, double **, double **, int, void *))func, A, B, C, R, n, NULL);
+  return test_func_generic((void (*)(double **, double **, double **, int, void *, void *))func, A, B, C, R, n, NULL, NULL);
 }
 
-void test_func_blocking(void (*func)(double **, double **, double **, int, void *), double **A, double **B, double **C, double **R, int n, int block_size)
+void test_func_blocking(void (*func)(double **, double **, double **, int, void *, void *), double **A, double **B, double **C, double **R, int n, int block_size, char *loop_order)
 {
-  return test_func_generic(func, A, B, C, R, n, (void *)&block_size);
+  return test_func_generic(func, A, B, C, R, n, (void *)&block_size, (void *)loop_order);
 }
 
 void copy_matrix(double **A, double **B, int N)
@@ -45,7 +45,7 @@ void copy_matrix(double **A, double **B, int N)
 int main(int argc, char const *argv[])
 {
   // ################## Testes randomico para matrizes grandes ##################
-  int N = 24;
+  int N = 128;
 
   double **pA = allocate_matrix(N);
   double **pB = allocate_matrix(N);
@@ -87,7 +87,7 @@ int main(int argc, char const *argv[])
     pR[i] = R[i];
   }*/
 
-  //testa se o resultado da multiplicação é igual ao esperado
+  // testa se o resultado da multiplicação é igual ao esperado
   test_func(matrix_multiply_ijk, pA, pB, pC, pR, N);
   test_func(matrix_multiply_ikj, pA, pB, pC, pR, N);
   test_func(matrix_multiply_jik, pA, pB, pC, pR, N);
@@ -95,12 +95,12 @@ int main(int argc, char const *argv[])
   test_func(matrix_multiply_kij, pA, pB, pC, pR, N);
   test_func(matrix_multiply_kji, pA, pB, pC, pR, N);
 
-  test_func_blocking(matrix_multiply_blocking_ijk, pA, pB, pC, pR, N, 1);
-  test_func_blocking(matrix_multiply_blocking_ikj, pA, pB, pC, pR, N, 2);
-  test_func_blocking(matrix_multiply_blocking_jik, pA, pB, pC, pR, N, 3);
-  test_func_blocking(matrix_multiply_blocking_jki, pA, pB, pC, pR, N, 4);
-  test_func_blocking(matrix_multiply_blocking_kij, pA, pB, pC, pR, N, 5);
-  test_func_blocking(matrix_multiply_blocking_kji, pA, pB, pC, pR, N, 6);
+  test_func_blocking(matrix_multiply_blocking, pA, pB, pC, pR, N, 1, "ijk");
+  test_func_blocking(matrix_multiply_blocking, pA, pB, pC, pR, N, 2, "ijk");
+  test_func_blocking(matrix_multiply_blocking, pA, pB, pC, pR, N, 3, "ijk");
+  test_func_blocking(matrix_multiply_blocking, pA, pB, pC, pR, N, 4, "ijk");
+  test_func_blocking(matrix_multiply_blocking, pA, pB, pC, pR, N, 5, "ijk");
+  test_func_blocking(matrix_multiply_blocking, pA, pB, pC, pR, N, 6, "ijk");
 
   test_func(matrix_multiply_cblas, pA, pB, pC, pR, N);
 
@@ -110,6 +110,9 @@ int main(int argc, char const *argv[])
   free_matrix(pB, N);
   free_matrix(pC, N);
   free_matrix(pR, N);
+
+  // to compile
+  //  gcc -o test tests/test.c src/mat_mult/matrix_multiply.c src/blocking/matrix_multiply_blocking.c src/cblas/matrix_multiply_blas.c src/strassen/matrix_multiply_strassen.c utils/matrix_utils.c utils/performance_utils.c -lm
 
   return 0;
 }

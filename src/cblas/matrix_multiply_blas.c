@@ -1,4 +1,4 @@
-#include "matrix_utils.h"
+#include "../../utils/matrix_utils.h"
 #include "matrix_multiply_blas.h"
 #include <cblas.h>
 #include <stdlib.h>

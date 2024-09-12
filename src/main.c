@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include "matrix_utils.h"
-#include "matrix_multiply.h"
-#include "matrix_multiply_blas.h"
-#include "matrix_multiply_blocking.h"
-#include "matrix_multiply_strassen.h"
-#include "performance_utils.h"
 #include "papi.h"
-#include "report_utils.h"
+#include "../utils/matrix_utils.h"
+#include "mat_mult/matrix_multiply.h"
+#include "cblas/matrix_multiply_blas.h"
+#include "blocking/matrix_multiply_blocking.h"
+#include "strassen/matrix_multiply_strassen.h"
+#include "../utils/performance_utils.h"
+#include "../utils/report_utils.h"
 
 //* Global variables
 int matrix_sizes[] = {128 , 512, 1024}; // Matrix sizes
@@ -115,18 +115,25 @@ int main()
     // Measure time for each method without blocking
     report_method(report, "Sem blocagem");
 
+    // Measure time methods without blocking and loop order ijk
     avaliar_funcao_sem_block(matrix_multiply_ijk, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[0].metrics, results[0].time);
 
+    // Measure time methods without blocking and loop order ikj
     avaliar_funcao_sem_block(matrix_multiply_ikj, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[1].metrics, results[1].time);
 
+    // Measure time methods without blocking and loop order jik
     avaliar_funcao_sem_block(matrix_multiply_jik, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[2].metrics, results[2].time);
 
+    // Measure time methods without blocking and loop order jki
     avaliar_funcao_sem_block(matrix_multiply_jki, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[3].metrics, results[3].time);
 
+    // Measure time methods without blocking and loop order kij
     avaliar_funcao_sem_block(matrix_multiply_kij, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[4].metrics, results[4].time);
 
+    // Measure time methods without blocking and loop order kji
     avaliar_funcao_sem_block(matrix_multiply_kji, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[5].metrics, results[5].time);
 
+    // Calculate the best method
     best_method(results, 7);
     best_loop_order = results[6].method;
 
@@ -139,6 +146,7 @@ int main()
     // Measure time for each method with blocking
     report_method(report, "Com blocagem");
 
+    // Measure time methods with blocking and loop order best mesured without blocking
     for (int b = 0; b < num_blocks; b++)
     {
       int block_size = block_sizes[b];
@@ -146,6 +154,7 @@ int main()
       avaliar_funcao_com_block(matrix_multiply_blocking, eventos, NUM_EVENTS, A, B, C, N, block_size, best_loop_order, results_w_block[b].metrics, results_w_block[b].time);
     }
 
+    // Calculate the best block configuration
     best_method(results_w_block, num_blocks + 1);
 
     // Print results
@@ -166,7 +175,7 @@ int main()
     avaliar_funcao_sem_block(matrix_multiply_cblas, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_cblas.metrics, results_cblas.time);
     report_body(report, eventos, NUM_EVENTS, results_cblas.method, results_cblas.metrics, results_cblas.time);
 
-    // Report resume with the best methods
+    // Print resume of the best methods
     report_general_results(report, results[6].method, results[6].metrics, results[6].time[0], results_w_block[4].method, results_w_block[4].metrics, results_w_block[4].time[0], results_strassen.method, results_strassen.metrics, results_strassen.time[0], results_cblas.method, results_cblas.metrics, results_cblas.time[0]);
 
     // Free matrices
@@ -176,7 +185,7 @@ int main()
   }
 
   fclose(report);
-  printf("Relatório gerado com sucesso.\n");
+  printf("Repot generated succesfully!\n");
 
   return 0;
 }
