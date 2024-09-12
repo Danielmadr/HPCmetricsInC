@@ -4,40 +4,44 @@
 #include <string.h>
 #include "papi.h"
 
+// Function to print the report header
 void report_header(FILE *report)
 {
-  fprintf(report, "Relatório de Multiplicação de Matrizes\n");
+  fprintf(report, "Relatório de Multiplicação de Matrizes       ");
   time_t t = time(NULL);
   struct tm tm = *localtime(&t);
   fprintf(report, "Data: %02d-%02d-%d %02d:%02d:%02d\n",
           tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900,
           tm.tm_hour, tm.tm_min, tm.tm_sec);
-  fprintf(report, "-------------------------------------\n");
+  fprintf(report, "-----------------------------------------------------------------------------------------------------------------\n");
   fprintf(report, "\n");
 }
 
-void report_info(FILE *report, int matrix_size, char *method, int num_blocks)
+// Function to print the report header
+void report_info(FILE *report, int matrix_size)
 {
-  fprintf(report, "\n-------------------------------------\n");
+  fprintf(report, "-----------------------------------------------------------------------------------------------------------------\n");
   fprintf(report, "Tamanho da matriz: %dx%d\n", matrix_size, matrix_size);
-  if (num_blocks > 0)
-  {
-    fprintf(report, "Número de blocos: %d\n", num_blocks);
-  }
-  fprintf(report, "Método: %s \n", method);
-  fprintf(report, "-------------------------------------");
+  fprintf(report, "-----------------------------------------------------------------------------------------------------------------");
   fprintf(report, "\n");
 }
 
-void report_body(FILE *report, int events[], int num_events, long long *results, char *method)
+// Function to print methos
+void report_method(FILE *report, char *method)
+{
+  fprintf(report, "\nMétodo: %s\n", method);
+  fprintf(report, "-------------------------------------------");
+  fprintf(report, "\n");
+}
+
+// Function to print the report body
+void report_body(FILE *report, int events[], int num_events, char *method, long long *results, double *time)
 {
   fprintf(report, "\nMétodo: %s\n", method);
 
   // print time
-  double real_time = (double)results[num_events + 1] / 1000000.0;
-  double cpu_time = (double)results[num_events + 2] / (double)PAPI_get_real_cyc();
-  fprintf(report, "Tempo real: %.6f segundos\n", real_time);
-  fprintf(report, "Tempo de CPU: %.6f segundos\n", cpu_time);
+  fprintf(report, "Tempo real: %.6f segundos\n", time[0]);
+  fprintf(report, "Tempo de CPU: %.6f segundos\n", time[1]);
 
   // print the events values
   char event_name[PAPI_MAX_STR_LEN]; // Array to store the event name
@@ -52,11 +56,36 @@ void report_body(FILE *report, int events[], int num_events, long long *results,
   }
 
   // Calculate MFLOPS
-  double mflops = results[4]               // total of operations
-                  / (real_time * 1000000); // time in seconds
+  double mflops = results[4] // total of operations
+                  / time[0]  // time in seconds
+                  / 1e6;     // convert to MFLOPS
   fprintf(report, "MFLOPS \u2248 %.2f\n", mflops);
 
   // Calculate CPI
   double cpi = (double)results[3] / (double)results[4];
   fprintf(report, "CPI: %.2f\n", cpi);
+}
+
+void report_general_results(FILE *report, char *method, long long *results, double min_time, char *method_w_block, long long *results_w_block, double min_time_w_block, char *method_strassen, long long *results_strassen, double min_time_strassen, char *method_cblas, long long *results_cblas, double min_time_cblas)
+{
+  fprintf(report, "\n\n");
+  fprintf(report, "-------------------------------------------\n");
+  fprintf(report, "Resultados Gerais\n");
+  fprintf(report, "-------------------------------------------\n");
+
+  fprintf(report, "Melhor método sem blocagem: %s\n", method);
+  fprintf(report, "Tempo real: %.6f segundos\n", min_time);
+  fprintf(report, "-------------------------------------------\n");
+
+  fprintf(report, "Melhor método com blocagem: %s\n", method_w_block);
+  fprintf(report, "Tempo real: %.6f segundos\n", min_time_w_block);
+  fprintf(report, "-------------------------------------------\n");
+
+  fprintf(report, "Melhor método Strassen: %s\n", method_strassen);
+  fprintf(report, "Tempo real: %.6f segundos\n", min_time_strassen);
+  fprintf(report, "-------------------------------------------\n");
+
+  fprintf(report, "Melhor método CBLAS: %s\n", method_cblas);
+  fprintf(report, "Tempo real: %.6f segundos\n", min_time_cblas);
+  fprintf(report, "-------------------------------------------\n");
 }

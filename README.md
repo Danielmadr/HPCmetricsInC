@@ -7,25 +7,51 @@ Este projeto implementa diferentes algoritmos de multiplicação de matrizes e c
 * **Algoritmo de Strassen:** Um algoritmo recursivo que divide e conquista para multiplicar matrizes, com um desempenho logarítmico para algumas dimensões da matriz.
 * **CBLAS:**  Utiliza a biblioteca CBLAS para realizar multiplicação de matrizes, oferecendo uma implementação otimizada.
 
+### Instalação
+
+**Pré-requisitos:**
+
+* Compilador C (gcc ou clang)
+* Biblioteca CBLAS (geralmente incluída em distribuições Linux)
+* Biblioteca PAPI (para medições de desempenho)
+
+**Instalação da Biblioteca PAPI**
+
+1. **Baixe o código-fonte da PAPI:**
+   ```bash
+   git clone https://github.com/PAPI/PAPI.git
+   ```
+
+2. **Configure, compile e instale a PAPI:**
+   ```bash
+   cd PAPI
+   ./configure
+   make
+   make test
+   sudo make install
+   ```
+
+**Instalação da Biblioteca CBLAS (se necessário)**
+
+A maioria das distribuições Linux inclui a biblioteca CBLAS (geralmente como parte do pacote LAPACK). Se você não a tiver instalada, verifique o repositório de pacotes da sua distribuição para obter instruções de instalação. 
+
+**Compilação do Projeto**
+
+1. **Navegue para o diretório do projeto:**
+   ```bash
+   cd matrix-multiplication
+   ```
+
+2. **Compile o programa:**
+   ```bash
+   gcc main.c matrix_utils.c matrix_multiply.c matrix_multiply_blas.c matrix_multiply_blocking.c matrix_multiply_strassen.c -o main -lcblas -lm -lpapi
+   ```
+
+   Substitua `-lcblas` por `-llapack` se você estiver usando LAPACK. 
+
 ### Como executar o programa:
 
-1. **Compile o código:**
-   ```bash
-➜  gcc main.c matrix_utils.c performance_utils.c matrix_multiply.c matrix_multiply_blas.c matrix_multiply_blocking.c matrix_multiply_strassen.c -o main -lcblas -lm
-➜  gcc test.c matrix_utils.c matrix_multiply.c matrix_multiply_blas.c matrix_multiply_blocking.c matrix_multiply_strassen.c performance_utils.c -o test -lcblas -lm
-
-# gcc -o PAPItest PAPItest.c -lpapi    
-   ```
-   
-   ou 
-   
-   ```bash
-   gcc main.c matrix_utils.c matrix_multiply.c matrix_multiply_blas.c matrix_multiply_blocking.c -o main -lcblas -lm
-   ```
-   
-   Substitua `-lcblas` por `-llapack` se você estiver usando LAPACK. 
-   
-2. **Execute o programa:**
+1. **Execute o programa:**
    ```bash
    ./main
    ```
@@ -48,5 +74,7 @@ O programa gerará um relatório chamado `matrix_multiply_report.txt` na pasta `
 * O tamanho dos blocos para a multiplicação com blocagem também é definido no arquivo `main.c`. 
 * Este projeto é um exemplo simples de como comparar o desempenho de diferentes algoritmos de multiplicação de matrizes. 
 * Você pode modificar o código para adicionar novos algoritmos, testar matrizes de diferentes tamanhos e realizar outras análises de desempenho.
+
+gcc test.c matrix_utils.c matrix_multiply.c matrix_multiply_blas.c matrix_multiply_blocking.c matrix_multiply_strassen.c performance_utils.c -o test -lcblas -lm
 
 Espero que este código seja útil para você!

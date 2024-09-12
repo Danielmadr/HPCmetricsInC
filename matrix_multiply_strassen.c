@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "matrix_utils.h"
 
-#define base 32 // base case for recursion
-
 // funtion to sum two matrices
 void add_matrices(double **A, double **B, double **C, int n)
 {
@@ -32,7 +30,7 @@ void subtract_matrices(double **A, double **B, double **C, int n)
 void strassen(double **A, double **B, double **C, int n)
 {
     // base case - use normal matrix multiplication
-    if (n <= base)
+    if (n <= 64)
     {
         for (int i = 0; i < n; i++)
         {

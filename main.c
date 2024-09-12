@@ -12,28 +12,48 @@
 #include "report_utils.h"
 
 //* Global variables
-int matrix_sizes[] = {128 /*, 512/*, 1024*/}; // matriz sizes
-int block_sizes[] = {/*2, 4,*/ 16 /*, 64*/};  // block sizes
-// Eventos PAPI
+int matrix_sizes[] = {128 , 512, 1024}; // Matrix sizes
+int block_sizes[] = {2 , 4, 16, 64};    // Block sizes
+
+// PAPI events
 #define NUM_EVENTS 6
 int eventos[] = {
-    PAPI_L1_TCM,  // Misses de cache de nível 1
-    PAPI_L2_TCM,  // Misses de cache de nível 2
-    PAPI_L3_TCM,  // Misses de cache de nível 3
-    PAPI_TOT_CYC, // Ciclos de clock totais
-    PAPI_TOT_INS, // Instruções totais
-    PAPI_FP_OPS   // Operações de ponto flutuante (se suportado)
+    PAPI_L1_TCM,  // L1 cache misses
+    PAPI_L2_TCM,  // L2 cache misses
+    PAPI_L3_TCM,  // L3 cache misses
+    PAPI_TOT_CYC, // Total cycles
+    PAPI_TOT_INS, // Total instructions
+    PAPI_FP_OPS   // Total floating point operations
 };
 
-void best_method(char *method, long long exe_time, char **best_method, double *best_time)
+// Struct to store the results
+typedef struct
 {
-  double exe_time_d = (double)exe_time / 1000000.0;
+  char *method;
+  long long metrics[NUM_EVENTS];
+  double time[2];
+} Result;
 
-  // Comparando o valor apontado por best_time
-  if (exe_time_d < *best_time)
+// Function to calculate the best method
+void best_method(Result *results, int num_results)
+{
+  int best_method_index = 0;
+
+  for (int i = 1; i < num_results-1; i++)
   {
-    *best_time = exe_time_d; // Atualizando o valor apontado por best_time
-    *best_method = method;   // Atualizando o método vencedor
+    if (results[i].time[0] < results[best_method_index].time[0])
+    {
+      best_method_index = i;
+    }
+  }
+
+  results[num_results - 1].method =  results[best_method_index].method;
+  results[num_results - 1].time[0] = results[best_method_index].time[0]; 
+  results[num_results - 1].time[1] = results[best_method_index].time[1]; 
+
+  for (int j = 0; j < NUM_EVENTS; j++)
+  {
+    results[num_results - 1].metrics[j] = results[best_method_index].metrics[j];
   }
 }
 
@@ -62,170 +82,94 @@ int main()
     initialize_matrix(A, N);
     initialize_matrix(B, N);
 
-    double cpu_time_used;
-    long long resultados[NUM_EVENTS + 2] = {0};
-    double min_time = 1e30;
-    double min_time_w_block = 1e30;
-    double min_time_strassen = 1e30;
-    double min_time_cblas = 1e30;
-    char *best_variation = "";
-    int best_block_size = 0;
-    double min_time_papi = 1e30;
-    char *best_variation_papi = "";
+    // Results for methods without blocking
+    Result results[7];
+    results[0].method = "ijk";
+    results[1].method = "ikj";
+    results[2].method = "jik";
+    results[3].method = "jki";
+    results[4].method = "kij";
+    results[5].method = "kji";
+    results[6].method = "best_method";
+    char *best_loop_order;
 
-    report_info(report, N, "Sem blocagem", 0);
+    // Results for methods with blocking
+    Result results_w_block[5];
+    results_w_block[0].method = "2 blocos";
+    results_w_block[1].method = "4 blocos";
+    results_w_block[2].method = "16 blocos";
+    results_w_block[3].method = "64 blocos";
+    results_w_block[4].method = "best_method";
 
-    //* ######### Multiplicação sem blocagem ###########
-    // Multiplicação ijk
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_ijk, A, B, C, N);
-    avaliar_funcao_sem_block(matrix_multiply_ijk, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, resultados);
-    report_body(report, eventos, NUM_EVENTS, resultados, "ijk");
-    best_method("ijk", resultados[NUM_EVENTS + 1], &best_variation_papi, &min_time_papi);
+    // Results for Strassen
+    Result results_strassen;
+    results_strassen.method = "Strassen";
+
+    // Results for CBLAS
+    Result results_cblas;
+    results_cblas.method = "CBLAS";
+
     
+    report_info(report, N);
 
-    fprintf(report, "Tempo gasto (ijk): %f segundos\n", cpu_time_used);
-    if (cpu_time_used < min_time)
+    // Measure time for each method without blocking
+    report_method(report, "Sem blocagem");
+
+    avaliar_funcao_sem_block(matrix_multiply_ijk, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[0].metrics, results[0].time);
+
+    avaliar_funcao_sem_block(matrix_multiply_ikj, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[1].metrics, results[1].time);
+
+    avaliar_funcao_sem_block(matrix_multiply_jik, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[2].metrics, results[2].time);
+
+    avaliar_funcao_sem_block(matrix_multiply_jki, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[3].metrics, results[3].time);
+
+    avaliar_funcao_sem_block(matrix_multiply_kij, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[4].metrics, results[4].time);
+
+    avaliar_funcao_sem_block(matrix_multiply_kji, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[5].metrics, results[5].time);
+
+    best_method(results, 7);
+    best_loop_order = results[6].method;
+
+    // Print results
+    for (int i = 0; i < 6; i++)
     {
-      min_time = cpu_time_used;
-      best_variation = "ijk";
+      report_body(report, eventos, NUM_EVENTS, results[i].method, results[i].metrics, results[i].time);
     }
 
-    // Multiplicação ikj
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_ikj, A, B, C, N);
-    avaliar_funcao_sem_block(matrix_multiply_ikj, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, resultados);
-    report_body(report, eventos, NUM_EVENTS, resultados, "ikj");
-    best_method("ikj", resultados[NUM_EVENTS + 1], &best_variation_papi, &min_time_papi);
+    // Measure time for each method with blocking
+    report_method(report, "Com blocagem");
 
-    fprintf(report, "Tempo gasto (ikj): %f segundos\n", cpu_time_used);
-    if (cpu_time_used < min_time)
-    {
-      min_time = cpu_time_used;
-      best_variation = "ikj";
-    }
-
-    // Multiplicação jik
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_jik, A, B, C, N);
-    avaliar_funcao_sem_block(matrix_multiply_jik, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, resultados);
-    report_body(report, eventos, NUM_EVENTS, resultados, "jik");
-    best_method("jik", resultados[NUM_EVENTS + 1], &best_variation_papi, &min_time_papi);
-
-    fprintf(report, "Tempo gasto (jik): %f segundos\n", cpu_time_used);
-    if (cpu_time_used < min_time)
-    {
-      min_time = cpu_time_used;
-      best_variation = "jik";
-    }
-
-    // Multiplicação jki
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_jki, A, B, C, N);
-    avaliar_funcao_sem_block(matrix_multiply_jki, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, resultados);
-    report_body(report, eventos, NUM_EVENTS, resultados, "jki");
-    best_method("jki", resultados[NUM_EVENTS + 1], &best_variation_papi, &min_time_papi);
-
-    fprintf(report, "Tempo gasto (jki): %f segundos\n", cpu_time_used);
-    if (cpu_time_used < min_time)
-    {
-      min_time = cpu_time_used;
-      best_variation = "jki";
-    }
-
-    // Multiplicação kij
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_kij, A, B, C, N);
-    avaliar_funcao_sem_block(matrix_multiply_kij, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, resultados);
-    report_body(report, eventos, NUM_EVENTS, resultados, "kij");
-    best_method("kij", resultados[NUM_EVENTS + 1], &best_variation_papi, &min_time_papi);
-
-    fprintf(report, "Tempo gasto (kij): %f segundos\n", cpu_time_used);
-    if (cpu_time_used < min_time)
-    {
-      min_time = cpu_time_used;
-      best_variation = "kij";
-    }
-
-    // Multiplicação kji
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_kji, A, B, C, N);
-    avaliar_funcao_sem_block(matrix_multiply_kji, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, resultados);
-    report_body(report, eventos, NUM_EVENTS, resultados, "kji");
-    best_method("kji", resultados[NUM_EVENTS + 1], &best_variation_papi, &min_time_papi);
-
-    fprintf(report, "Tempo gasto (kji): %f segundos\n", cpu_time_used);
-    if (cpu_time_used < min_time)
-    {
-      min_time = cpu_time_used;
-      best_variation = "kji";
-    }
-
-    fprintf(report, "-------------------------------------\n");
-    fprintf(report, "Melhor organização de laço para %dx%d: %s= %f segundos\n", N, N, best_variation, min_time);
-    fprintf(report, "\n");
-
-    fprintf(report, "-------------------------------------\n");
-    fprintf(report, "PAPI: Melhor organização de laço para %dx%d: %s= %f segundos\n", N, N, best_variation_papi, min_time_papi);
-
-    // ################ Multiplicação usando Blocagem #################
     for (int b = 0; b < num_blocks; b++)
     {
-      report_info(report, N, "Com blocagem", num_blocks);
-
       int block_size = block_sizes[b];
-
-      cpu_time_used = measure_time_with_blocking(matrix_multiply_blocking, A, B, C, N, block_size, best_variation);
-
-      fprintf(report, "Tamanho do bloco: %d, Variação: %s, Tempo: %f segundos\n",
-              block_size, best_variation, cpu_time_used);
-
-      if (cpu_time_used < min_time_w_block)
-      {
-        min_time_w_block = cpu_time_used;
-        best_block_size = block_size;
-      }
+      printf("\n %i -- %s \n", block_size, best_loop_order);
+      avaliar_funcao_com_block(matrix_multiply_blocking, eventos, NUM_EVENTS, A, B, C, N, block_size, best_loop_order, results_w_block[b].metrics, results_w_block[b].time);
     }
-    fprintf(report, "-------------------------------------\n");
-    fprintf(report, "Melhor tamanho do bloco para %dx%d: %d= %f segundos\n", N, N, best_block_size, min_time_w_block);
-    fprintf(report, "\n");
 
-    // ########### Multiplicação usando o algoritmo de Strassen ###########
-    // Multiplicação usando o algoritmo de Strassen
-    printf("Multiplicação usando Strassen\n");
-    cpu_time_used = measure_time_no_blocking(strassen, A, B, C, N);
-    min_time_strassen = cpu_time_used;
+    best_method(results_w_block, num_blocks + 1);
 
-    fprintf(report, "Multiplicação usando Strassen\n");
-    fprintf(report, "-------------------------------------\n");
-    fprintf(report, "Tempo gasto (Strassen): %f segundos\n", min_time_strassen);
-    fprintf(report, "\n");
+    // Print results
+    for (int i = 0; i < num_blocks + 1; i++)
+    {
+      report_body(report, eventos, NUM_EVENTS, results_w_block[i].method, results_w_block[i].metrics, results_w_block[i].time);
+    }
+    
+    // Measure time for Strassen
+    report_method(report, "Strassen");
 
-    // ########### Multiplicação usando CBLAS ###########
-    // Multiplicação usando CBLAS
-    printf("Multiplicação usando CBLAS\n");
-    cpu_time_used = measure_time_no_blocking(matrix_multiply_cblas, A, B, C, N);
-    min_time_cblas = cpu_time_used;
+    avaliar_funcao_sem_block(strassen, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_strassen.metrics, results_strassen.time);
+    report_body(report, eventos, NUM_EVENTS, results_strassen.method, results_strassen.metrics, results_strassen.time);
 
-    fprintf(report, "Multiplicação usando CBLAS\n");
-    fprintf(report, "-------------------------------------\n");
-    fprintf(report, "Tempo gasto (CBLAS): %f segundos\n", min_time_cblas);
-    fprintf(report, "\n");
+    // Measure time for CBLAS
+    report_method(report, "CBLAS");
 
-    fprintf(report, "\n");
-    fprintf(report, "Resultados:\n");
-    fprintf(report, "-------------------------------------\n");
-    fprintf(report, "\n");
+    avaliar_funcao_sem_block(matrix_multiply_cblas, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_cblas.metrics, results_cblas.time);
+    report_body(report, eventos, NUM_EVENTS, results_cblas.method, results_cblas.metrics, results_cblas.time);
 
-    // Reporta a melhor organização de laço para o tamanho N
-    fprintf(report, "Melhor organização de laço para %dx%d: %s= %f segundos\n", N, N, best_variation, min_time);
+    // Report resume with the best methods
+    report_general_results(report, results[6].method, results[6].metrics, results[6].time[0], results_w_block[4].method, results_w_block[4].metrics, results_w_block[4].time[0], results_strassen.method, results_strassen.metrics, results_strassen.time[0], results_cblas.method, results_cblas.metrics, results_cblas.time[0]);
 
-    // Reporta o tamanho do bloco mais eficiente para o tamanho N
-    fprintf(report, "Melhor tamanho do bloco para %dx%d: %d= %f segundos\n", N, N, best_block_size, min_time_w_block);
-
-    // Reporta o tempo gasto para o algoritmo de Strassen
-    fprintf(report, "Tempo gasto (Strassen): %f segundos\n", min_time_strassen);
-
-    // Reporta o tempo gasto para a multiplicação usando CBLAS
-    fprintf(report, "Tempo gasto (CBLAS): %f segundos\n", min_time_cblas);
-
-    // teste papi
-    avaliar_funcao_com_block(matrix_multiply_blocking, eventos, NUM_EVENTS, A, B, C, N, 2, best_variation, resultados);
-
+    // Free matrices
     free_matrix(A, N);
     free_matrix(B, N);
     free_matrix(C, N);
