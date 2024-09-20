@@ -55,15 +55,14 @@ void report_body(FILE *report, int events[], int num_events, char *method, long 
     fprintf(report, "%s: %lld\n", event_name, results[i]);
   }
 
-  // Calculate MFLOPS
-  double mflops = results[4] // total of operations
-                  / time[0]  // time in seconds
-                  / 1e6;     // convert to MFLOPS
-  fprintf(report, "MFLOPS \u2248 %.2f\n", mflops);
-
   // Calculate CPI
   double cpi = (double)results[3] / (double)results[4];
   fprintf(report, "CPI: %.2f\n", cpi);
+
+  // Calculate MFLOPS
+  double mflops = (double)results[5] / time[0] / 1e6;
+  fprintf(report, "MFLOPS: %.2f\n", mflops);
+  
 }
 
 void report_general_results(FILE *report, char *method, long long *results, double min_time, char *method_w_block, long long *results_w_block, double min_time_w_block, char *method_strassen, long long *results_strassen, double min_time_strassen, char *method_cblas, long long *results_cblas, double min_time_cblas)

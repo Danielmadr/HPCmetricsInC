@@ -62,7 +62,7 @@ int main()
   const int num_sizes = sizeof(matrix_sizes) / sizeof(matrix_sizes[0]);
   const int num_blocks = sizeof(block_sizes) / sizeof(block_sizes[0]);
 
-  FILE *report = fopen("report/matrix_multiply_report.txt", "w");
+  FILE *report = fopen("../report/matrix_multiply_report.txt", "w");
   if (report == NULL)
   {
     printf("Erro ao abrir o arquivo de relatório.\n");
@@ -116,22 +116,22 @@ int main()
     report_method(report, "Sem blocagem");
 
     // Measure time methods without blocking and loop order ijk
-    avaliar_funcao_sem_block(matrix_multiply_ijk, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[0].metrics, results[0].time);
+    avaliar_funcao_sem_block(matrix_multiply_ijk, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[0].metrics, results[0].time, results[0].method);
 
     // Measure time methods without blocking and loop order ikj
-    avaliar_funcao_sem_block(matrix_multiply_ikj, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[1].metrics, results[1].time);
+    avaliar_funcao_sem_block(matrix_multiply_ikj, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[1].metrics, results[1].time, results[1].method);
 
     // Measure time methods without blocking and loop order jik
-    avaliar_funcao_sem_block(matrix_multiply_jik, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[2].metrics, results[2].time);
+    avaliar_funcao_sem_block(matrix_multiply_jik, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[2].metrics, results[2].time, results[2].method);
 
     // Measure time methods without blocking and loop order jki
-    avaliar_funcao_sem_block(matrix_multiply_jki, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[3].metrics, results[3].time);
+    avaliar_funcao_sem_block(matrix_multiply_jki, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[3].metrics, results[3].time, results[3].method);
 
     // Measure time methods without blocking and loop order kij
-    avaliar_funcao_sem_block(matrix_multiply_kij, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[4].metrics, results[4].time);
+    avaliar_funcao_sem_block(matrix_multiply_kij, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[4].metrics, results[4].time, results[4].method);
 
     // Measure time methods without blocking and loop order kji
-    avaliar_funcao_sem_block(matrix_multiply_kji, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[5].metrics, results[5].time);
+    avaliar_funcao_sem_block(matrix_multiply_kji, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results[5].metrics, results[5].time, results[5].method);
 
     // Calculate the best method
     best_method(results, 7);
@@ -150,8 +150,7 @@ int main()
     for (int b = 0; b < num_blocks; b++)
     {
       int block_size = block_sizes[b];
-      printf("\n %i -- %s \n", block_size, best_loop_order);
-      avaliar_funcao_com_block(matrix_multiply_blocking, eventos, NUM_EVENTS, A, B, C, N, block_size, best_loop_order, results_w_block[b].metrics, results_w_block[b].time);
+      avaliar_funcao_com_block(matrix_multiply_blocking, eventos, NUM_EVENTS, A, B, C, N, block_size, best_loop_order, results_w_block[b].metrics, results_w_block[b].time, results_w_block[b].method);
     }
 
     // Calculate the best block configuration
@@ -166,13 +165,13 @@ int main()
     // Measure time for Strassen
     report_method(report, "Strassen");
 
-    avaliar_funcao_sem_block(strassen, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_strassen.metrics, results_strassen.time);
+    avaliar_funcao_sem_block(strassen, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_strassen.metrics, results_strassen.time, results_strassen.method);
     report_body(report, eventos, NUM_EVENTS, results_strassen.method, results_strassen.metrics, results_strassen.time);
 
     // Measure time for CBLAS
     report_method(report, "CBLAS");
 
-    avaliar_funcao_sem_block(matrix_multiply_cblas, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_cblas.metrics, results_cblas.time);
+    avaliar_funcao_sem_block(matrix_multiply_cblas, eventos, NUM_EVENTS, A, B, C, N, NULL, NULL, results_cblas.metrics, results_cblas.time, results_cblas.method);
     report_body(report, eventos, NUM_EVENTS, results_cblas.method, results_cblas.metrics, results_cblas.time);
 
     // Print resume of the best methods
